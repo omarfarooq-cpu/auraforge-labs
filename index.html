@@ -822,6 +822,1461 @@
       observer.observe(el);
     });
   </script>
+<!-- FUTURISTIC ADVANCEMENTS FOR AURAFORGE LABS -->
+<!-- ADD THIS BEFORE </body> -->
 
+<!-- CUSTOM CURSOR -->
+<div class="cursor"></div>
+<div class="cursor-blur"></div>
+
+<!-- AI ASSISTANT BUTTON -->
+<div class="ai-assistant">
+  <span>AI</span>
+</div>
+
+<!-- LOADING SCREEN -->
+<div id="loader">
+  <h1>AuraForge Labs</h1>
+</div>
+
+<style>
+
+/* =========================
+   FUTURISTIC LOADER
+========================= */
+
+#loader{
+  position:fixed;
+  inset:0;
+  background:#050816;
+  z-index:99999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:1s ease;
+}
+
+#loader h1{
+  font-size:3rem;
+  font-family:'Space Grotesk',sans-serif;
+  background:linear-gradient(90deg,#00d9ff,#7a5cff,#00fff0);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+  0%,100%{
+    opacity:1;
+    transform:scale(1);
+  }
+
+  50%{
+    opacity:0.7;
+    transform:scale(1.05);
+  }
+}
+
+/* =========================
+   CUSTOM CURSOR
+========================= */
+
+body{
+  cursor:none;
+}
+
+.cursor{
+  width:12px;
+  height:12px;
+  background:#00d9ff;
+  border-radius:50%;
+  position:fixed;
+  pointer-events:none;
+  z-index:999999;
+  box-shadow:0 0 20px #00d9ff;
+  transform:translate(-50%,-50%);
+}
+
+.cursor-blur{
+  width:40px;
+  height:40px;
+  background:rgba(0,217,255,0.2);
+  border-radius:50%;
+  position:fixed;
+  pointer-events:none;
+  z-index:999998;
+  filter:blur(10px);
+  transform:translate(-50%,-50%);
+}
+
+/* =========================
+   FUTURISTIC BUTTON HOVER
+========================= */
+
+.btn{
+  position:relative;
+  overflow:hidden;
+}
+
+.btn::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,0.25),
+    transparent
+  );
+  transition:0.8s;
+}
+
+.btn:hover::before{
+  left:100%;
+}
+
+/* =========================
+   GLOWING SERVICE CARDS
+========================= */
+
+.glass-card{
+  position:relative;
+  overflow:hidden;
+}
+
+.glass-card::after{
+  content:'';
+  position:absolute;
+  inset:-2px;
+  background:linear-gradient(
+    135deg,
+    rgba(0,217,255,0.4),
+    rgba(122,92,255,0.3),
+    transparent
+  );
+  z-index:-1;
+  opacity:0;
+  transition:0.5s ease;
+  border-radius:24px;
+}
+
+.glass-card:hover::after{
+  opacity:1;
+}
+
+/* =========================
+   AI ASSISTANT BUTTON
+========================= */
+
+.ai-assistant{
+  position:fixed;
+  right:30px;
+  bottom:30px;
+  width:70px;
+  height:70px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#00d9ff,#7a5cff);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:white;
+  font-weight:700;
+  font-size:1.2rem;
+  box-shadow:0 0 40px rgba(0,217,255,0.5);
+  cursor:pointer;
+  z-index:9999;
+  animation:floatAI 3s ease-in-out infinite;
+}
+
+@keyframes floatAI{
+
+  0%,100%{
+    transform:translateY(0px);
+  }
+
+  50%{
+    transform:translateY(-10px);
+  }
+}
+
+/* =========================
+   PARALLAX HERO EFFECT
+========================= */
+
+.hero{
+  background:
+  radial-gradient(circle at center,
+  rgba(0,217,255,0.08),
+  transparent 40%);
+}
+
+/* =========================
+   NEON TEXT EFFECT
+========================= */
+
+.gradient-text{
+  text-shadow:
+  0 0 10px rgba(0,217,255,0.5),
+  0 0 20px rgba(122,92,255,0.3);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:768px){
+
+  .cursor,
+  .cursor-blur{
+    display:none;
+  }
+
+  body{
+    cursor:auto;
+  }
+
+  .ai-assistant{
+    width:60px;
+    height:60px;
+    right:20px;
+    bottom:20px;
+  }
+
+}
+
+</style>
+
+<script>
+
+/* =========================
+   LOADER ANIMATION
+========================= */
+
+window.addEventListener("load",()=>{
+
+  setTimeout(()=>{
+
+    document.getElementById("loader").style.opacity="0";
+
+    setTimeout(()=>{
+
+      document.getElementById("loader").style.display="none";
+
+    },1000);
+
+  },2000);
+
+});
+
+/* =========================
+   CUSTOM CURSOR
+========================= */
+
+const cursor = document.querySelector(".cursor");
+const blur = document.querySelector(".cursor-blur");
+
+document.addEventListener("mousemove",(e)=>{
+
+  cursor.style.left = e.clientX + "px";
+  cursor.style.top = e.clientY + "px";
+
+  blur.style.left = e.clientX + "px";
+  blur.style.top = e.clientY + "px";
+
+});
+
+/* =========================
+   BUTTON HOVER EFFECT
+========================= */
+
+const buttons = document.querySelectorAll("a, button");
+
+buttons.forEach((btn)=>{
+
+  btn.addEventListener("mouseenter",()=>{
+
+    cursor.style.transform = "translate(-50%,-50%) scale(2)";
+    cursor.style.background = "#7a5cff";
+
+  });
+
+  btn.addEventListener("mouseleave",()=>{
+
+    cursor.style.transform = "translate(-50%,-50%) scale(1)";
+    cursor.style.background = "#00d9ff";
+
+  });
+
+});
+
+
+</script>
+<!-- ============================= -->
+<!-- AURAFORGE AI ASSISTANT SYSTEM -->
+<!-- ============================= -->
+
+<!-- ADD THIS BEFORE </body> -->
+
+<!-- AI ASSISTANT -->
+<div class="auraforge-ai">
+
+  <!-- Floating Button -->
+  <div class="ai-toggle" id="aiToggle">
+    ✦
+  </div>
+
+  <!-- Chat Window -->
+  <div class="ai-chat" id="aiChat">
+
+    <div class="ai-header">
+      <div>
+        <h3>AuraForge AI</h3>
+        <p>Future-Ready Assistant</p>
+      </div>
+
+      <button id="closeAI">✕</button>
+    </div>
+
+    <div class="ai-messages" id="aiMessages">
+
+      <div class="bot-message">
+        Hello 👋 <br><br>
+        I'm AuraForge AI. <br>
+        Ask about:
+        <br><br>
+        • Website Development <br>
+        • AI Integration <br>
+        • Branding <br>
+        • UI/UX <br>
+        • IoT Solutions
+      </div>
+
+    </div>
+
+    <div class="ai-input-area">
+
+      <input
+        type="text"
+        id="userInput"
+        placeholder="Ask AuraForge AI..."
+      />
+
+      <button id="sendBtn">
+        ➜
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+<style>
+
+/* =========================
+   AURAFORGE AI SYSTEM
+========================= */
+
+.auraforge-ai{
+  position:fixed;
+  bottom:30px;
+  right:30px;
+  z-index:99999;
+  font-family:'Space Grotesk',sans-serif;
+}
+
+/* =========================
+   FLOATING BUTTON
+========================= */
+
+.ai-toggle{
+  width:72px;
+  height:72px;
+  border-radius:50%;
+  background:
+  linear-gradient(
+    135deg,
+    #00d9ff,
+    #7a5cff,
+    #00fff0
+  );
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  color:white;
+  font-size:1.8rem;
+  cursor:pointer;
+
+  box-shadow:
+  0 0 30px rgba(0,217,255,0.5),
+  0 0 60px rgba(122,92,255,0.3);
+
+  animation:floatAI 4s ease-in-out infinite;
+  transition:0.4s ease;
+}
+
+.ai-toggle:hover{
+  transform:scale(1.08);
+}
+
+@keyframes floatAI{
+
+  0%,100%{
+    transform:translateY(0px);
+  }
+
+  50%{
+    transform:translateY(-10px);
+  }
+}
+
+/* =========================
+   CHAT WINDOW
+========================= */
+
+.ai-chat{
+  width:360px;
+  height:540px;
+
+  background:
+  rgba(10,15,30,0.92);
+
+  border:
+  1px solid rgba(255,255,255,0.08);
+
+  backdrop-filter:blur(18px);
+
+  border-radius:28px;
+
+  position:absolute;
+  bottom:90px;
+  right:0;
+
+  overflow:hidden;
+
+  display:none;
+  flex-direction:column;
+
+  box-shadow:
+  0 0 50px rgba(0,217,255,0.18);
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.ai-header{
+  padding:1rem 1.2rem;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  background:
+  linear-gradient(
+    90deg,
+    rgba(0,217,255,0.15),
+    rgba(122,92,255,0.12)
+  );
+
+  border-bottom:
+  1px solid rgba(255,255,255,0.05);
+}
+
+.ai-header h3{
+  color:white;
+  font-size:1.1rem;
+}
+
+.ai-header p{
+  color:#b7c1d9;
+  font-size:0.8rem;
+}
+
+.ai-header button{
+  background:none;
+  border:none;
+  color:white;
+  font-size:1.2rem;
+  cursor:pointer;
+}
+
+/* =========================
+   MESSAGES
+========================= */
+
+.ai-messages{
+  flex:1;
+  overflow-y:auto;
+  padding:1rem;
+
+  display:flex;
+  flex-direction:column;
+  gap:1rem;
+}
+
+.bot-message,
+.user-message{
+
+  max-width:85%;
+  padding:1rem;
+  border-radius:18px;
+  line-height:1.6;
+  font-size:0.92rem;
+}
+
+.bot-message{
+
+  background:
+  rgba(255,255,255,0.06);
+
+  color:white;
+
+  border:
+  1px solid rgba(255,255,255,0.06);
+
+  align-self:flex-start;
+}
+
+.user-message{
+
+  background:
+  linear-gradient(
+    135deg,
+    #00d9ff,
+    #7a5cff
+  );
+
+  color:white;
+
+  align-self:flex-end;
+}
+
+/* =========================
+   INPUT AREA
+========================= */
+
+.ai-input-area{
+
+  display:flex;
+  gap:0.8rem;
+
+  padding:1rem;
+
+  border-top:
+  1px solid rgba(255,255,255,0.05);
+}
+
+.ai-input-area input{
+
+  flex:1;
+
+  background:
+  rgba(255,255,255,0.05);
+
+  border:
+  1px solid rgba(255,255,255,0.08);
+
+  color:white;
+
+  padding:1rem;
+
+  border-radius:14px;
+
+  outline:none;
+}
+
+.ai-input-area button{
+
+  width:55px;
+  border:none;
+
+  border-radius:14px;
+
+  background:
+  linear-gradient(
+    135deg,
+    #00d9ff,
+    #7a5cff
+  );
+
+  color:white;
+
+  cursor:pointer;
+
+  font-size:1.1rem;
+}
+
+/* =========================
+   SCROLLBAR
+========================= */
+
+.ai-messages::-webkit-scrollbar{
+  width:6px;
+}
+
+.ai-messages::-webkit-scrollbar-thumb{
+  background:#00d9ff;
+  border-radius:20px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px){
+
+  .ai-chat{
+    width:92vw;
+    height:75vh;
+    right:-10px;
+  }
+
+  .ai-toggle{
+    width:65px;
+    height:65px;
+  }
+
+}
+
+</style>
+
+<script>
+
+/* =========================
+   OPEN/CLOSE AI
+========================= */
+
+const aiToggle = document.getElementById("aiToggle");
+const aiChat = document.getElementById("aiChat");
+const closeAI = document.getElementById("closeAI");
+
+aiToggle.onclick = () => {
+
+  aiChat.style.display = "flex";
+
+}
+
+closeAI.onclick = () => {
+
+  aiChat.style.display = "none";
+
+}
+
+/* =========================
+   MESSAGE SYSTEM
+========================= */
+
+const sendBtn = document.getElementById("sendBtn");
+const userInput = document.getElementById("userInput");
+const aiMessages = document.getElementById("aiMessages");
+
+/* =========================
+   SEND MESSAGE
+========================= */
+
+function sendMessage(){
+
+  const text = userInput.value.trim();
+
+  if(text === "") return;
+
+  /* USER MESSAGE */
+
+  const userMsg = document.createElement("div");
+
+  userMsg.className = "user-message";
+
+  userMsg.innerText = text;
+
+  aiMessages.appendChild(userMsg);
+
+  userInput.value = "";
+
+  aiMessages.scrollTop = aiMessages.scrollHeight;
+
+  /* AI THINKING */
+
+  setTimeout(()=>{
+
+    const botMsg = document.createElement("div");
+
+    botMsg.className = "bot-message";
+
+    botMsg.innerHTML = generateResponse(text);
+
+    aiMessages.appendChild(botMsg);
+
+    aiMessages.scrollTop = aiMessages.scrollHeight;
+
+  },700);
+
+}
+
+/* =========================
+   AI RESPONSE ENGINE
+========================= */
+
+function generateResponse(input){
+
+  input = input.toLowerCase();
+
+  if(input.includes("website")){
+
+    return `
+      We create futuristic premium websites with:
+      <br><br>
+      • Modern UI/UX <br>
+      • Responsive Design <br>
+      • AI Integration <br>
+      • Premium Animations <br>
+      • Startup Landing Pages
+    `;
+  }
+
+  else if(input.includes("ai")){
+
+    return `
+      AuraForge Labs develops:
+      <br><br>
+      • AI Chatbots <br>
+      • AI Automation <br>
+      • Smart Assistants <br>
+      • AI Website Features <br>
+      • Intelligent Experiences
+    `;
+  }
+
+  else if(input.includes("iot")){
+
+    return `
+      Our IoT solutions include:
+      <br><br>
+      • Smart Dashboards <br>
+      • Device Monitoring UI <br>
+      • Embedded Interfaces <br>
+      • Real-Time Data Systems
+    `;
+  }
+
+  else if(input.includes("price")){
+
+    return `
+      Pricing depends on:
+      <br><br>
+      • Features <br>
+      • Design Complexity <br>
+      • AI Integrations <br>
+      • Custom Development
+      <br><br>
+      Contact us for a project quote 🚀
+    `;
+  }
+
+  else if(input.includes("branding")){
+
+    return `
+      We build startup brands with:
+      <br><br>
+      • Logo Systems <br>
+      • Premium UI Identity <br>
+      • Social Branding <br>
+      • Startup Positioning
+    `;
+  }
+
+  else{
+
+    return `
+      AuraForge AI is evolving 🚀
+      <br><br>
+      Ask me about:
+      <br><br>
+      • Websites <br>
+      • AI Solutions <br>
+      • Branding <br>
+      • IoT Systems <br>
+      • Startup Experiences
+    `;
+  }
+
+}
+
+/* =========================
+   ENTER KEY SUPPORT
+========================= */
+
+sendBtn.addEventListener("click",sendMessage);
+
+userInput.addEventListener("keypress",(e)=>{
+
+  if(e.key === "Enter"){
+
+    sendMessage();
+
+  }
+
+});
+
+</script>
+<!-- ===================================== -->
+<!-- AURAFORGE NEXT-GEN AI SYSTEM -->
+<!-- ===================================== -->
+
+<!-- ADD BEFORE </body> -->
+
+<div class="af-ai-container">
+
+  <!-- AI Orb -->
+  <div class="af-ai-orb" id="orb">
+    <div class="orb-ring"></div>
+    <div class="orb-core"></div>
+  </div>
+
+  <!-- AI Panel -->
+  <div class="af-panel" id="afPanel">
+
+    <!-- Header -->
+    <div class="af-header">
+
+      <div>
+        <h2>AuraForge AI</h2>
+        <p>Next-Generation Startup Assistant</p>
+      </div>
+
+      <button id="closePanel">✕</button>
+
+    </div>
+
+    <!-- Messages -->
+    <div class="af-messages" id="afMessages">
+
+      <div class="af-bot">
+        🚀 Welcome to AuraForge AI
+        <br><br>
+
+        Features Enabled:
+        <br><br>
+
+        • Smart Conversations <br>
+        • Voice Interaction <br>
+        • AI Project Estimation <br>
+        • Startup Consultation <br>
+        • IoT Solution Guidance
+      </div>
+
+    </div>
+
+    <!-- Suggestion Chips -->
+    <div class="af-suggestions">
+
+      <button onclick="quickAsk('Website pricing')">
+        Website Pricing
+      </button>
+
+      <button onclick="quickAsk('AI solutions')">
+        AI Solutions
+      </button>
+
+      <button onclick="quickAsk('IoT dashboard')">
+        IoT Dashboard
+      </button>
+
+    </div>
+
+    <!-- Input -->
+    <div class="af-input-area">
+
+      <button id="voiceBtn">
+        🎤
+      </button>
+
+      <input
+        type="text"
+        id="afInput"
+        placeholder="Ask AuraForge AI..."
+      />
+
+      <button id="sendMessage">
+        ➜
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+<style>
+
+/* =========================
+   GLOBAL AI SYSTEM
+========================= */
+
+.af-ai-container{
+  position:fixed;
+  right:30px;
+  bottom:30px;
+  z-index:999999;
+  font-family:'Space Grotesk',sans-serif;
+}
+
+/* =========================
+   AI ORB
+========================= */
+
+.af-ai-orb{
+
+  width:90px;
+  height:90px;
+
+  border-radius:50%;
+
+  position:relative;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  cursor:pointer;
+
+  background:
+  radial-gradient(circle,
+  #00d9ff,
+  #7a5cff);
+
+  box-shadow:
+  0 0 30px rgba(0,217,255,0.6),
+  0 0 60px rgba(122,92,255,0.4);
+
+  animation:orbFloat 5s ease-in-out infinite;
+}
+
+.orb-ring{
+
+  position:absolute;
+
+  width:120px;
+  height:120px;
+
+  border:
+  2px solid rgba(0,217,255,0.3);
+
+  border-radius:50%;
+
+  animation:rotate 10s linear infinite;
+}
+
+.orb-core{
+
+  width:25px;
+  height:25px;
+
+  border-radius:50%;
+
+  background:white;
+
+  box-shadow:
+  0 0 20px white;
+}
+
+@keyframes rotate{
+
+  from{
+    transform:rotate(0deg);
+  }
+
+  to{
+    transform:rotate(360deg);
+  }
+}
+
+@keyframes orbFloat{
+
+  0%,100%{
+    transform:translateY(0px);
+  }
+
+  50%{
+    transform:translateY(-12px);
+  }
+}
+
+/* =========================
+   AI PANEL
+========================= */
+
+.af-panel{
+
+  width:390px;
+  height:620px;
+
+  position:absolute;
+
+  right:0;
+  bottom:120px;
+
+  display:none;
+  flex-direction:column;
+
+  overflow:hidden;
+
+  border-radius:30px;
+
+  background:
+  rgba(8,12,24,0.95);
+
+  border:
+  1px solid rgba(255,255,255,0.08);
+
+  backdrop-filter:blur(20px);
+
+  box-shadow:
+  0 0 60px rgba(0,217,255,0.2);
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.af-header{
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  padding:1.2rem;
+
+  border-bottom:
+  1px solid rgba(255,255,255,0.06);
+
+  background:
+  linear-gradient(
+    90deg,
+    rgba(0,217,255,0.12),
+    rgba(122,92,255,0.12)
+  );
+}
+
+.af-header h2{
+  color:white;
+}
+
+.af-header p{
+  color:#9eb2d0;
+  font-size:0.85rem;
+}
+
+.af-header button{
+
+  background:none;
+  border:none;
+
+  color:white;
+
+  cursor:pointer;
+
+  font-size:1.2rem;
+}
+
+/* =========================
+   MESSAGES
+========================= */
+
+.af-messages{
+
+  flex:1;
+
+  overflow-y:auto;
+
+  padding:1rem;
+
+  display:flex;
+  flex-direction:column;
+
+  gap:1rem;
+}
+
+.af-bot,
+.af-user{
+
+  max-width:85%;
+
+  padding:1rem;
+
+  border-radius:18px;
+
+  line-height:1.7;
+
+  font-size:0.92rem;
+}
+
+.af-bot{
+
+  background:
+  rgba(255,255,255,0.05);
+
+  color:white;
+
+  border:
+  1px solid rgba(255,255,255,0.05);
+
+  align-self:flex-start;
+}
+
+.af-user{
+
+  background:
+  linear-gradient(
+    135deg,
+    #00d9ff,
+    #7a5cff
+  );
+
+  color:white;
+
+  align-self:flex-end;
+}
+
+/* =========================
+   SUGGESTIONS
+========================= */
+
+.af-suggestions{
+
+  display:flex;
+  gap:0.6rem;
+
+  padding:1rem;
+
+  overflow-x:auto;
+}
+
+.af-suggestions button{
+
+  background:
+  rgba(255,255,255,0.05);
+
+  border:
+  1px solid rgba(255,255,255,0.08);
+
+  color:white;
+
+  padding:0.7rem 1rem;
+
+  border-radius:999px;
+
+  cursor:pointer;
+
+  white-space:nowrap;
+
+  transition:0.3s ease;
+}
+
+.af-suggestions button:hover{
+
+  border-color:#00d9ff;
+}
+
+/* =========================
+   INPUT AREA
+========================= */
+
+.af-input-area{
+
+  display:flex;
+  gap:0.8rem;
+
+  padding:1rem;
+
+  border-top:
+  1px solid rgba(255,255,255,0.05);
+}
+
+.af-input-area input{
+
+  flex:1;
+
+  background:
+  rgba(255,255,255,0.05);
+
+  border:
+  1px solid rgba(255,255,255,0.08);
+
+  color:white;
+
+  padding:1rem;
+
+  border-radius:14px;
+
+  outline:none;
+}
+
+.af-input-area button{
+
+  width:55px;
+
+  border:none;
+
+  border-radius:14px;
+
+  cursor:pointer;
+
+  color:white;
+
+  background:
+  linear-gradient(
+    135deg,
+    #00d9ff,
+    #7a5cff
+  );
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px){
+
+  .af-panel{
+
+    width:95vw;
+    height:80vh;
+  }
+
+  .af-ai-container{
+
+    right:10px;
+    bottom:15px;
+  }
+}
+
+</style>
+
+<script>
+
+/* =========================
+   OPEN / CLOSE PANEL
+========================= */
+
+const orb = document.getElementById("orb");
+const panel = document.getElementById("afPanel");
+const closePanel = document.getElementById("closePanel");
+
+orb.onclick = () => {
+
+  panel.style.display = "flex";
+
+}
+
+closePanel.onclick = () => {
+
+  panel.style.display = "none";
+
+}
+
+/* =========================
+   MESSAGE SYSTEM
+========================= */
+
+const sendBtn = document.getElementById("sendMessage");
+const input = document.getElementById("afInput");
+const messages = document.getElementById("afMessages");
+
+function addMessage(text,type){
+
+  const div = document.createElement("div");
+
+  div.className =
+  type === "user"
+  ? "af-user"
+  : "af-bot";
+
+  div.innerHTML = text;
+
+  messages.appendChild(div);
+
+  messages.scrollTop =
+  messages.scrollHeight;
+}
+
+/* =========================
+   SEND MESSAGE
+========================= */
+
+function sendMessage(){
+
+  const text =
+  input.value.trim();
+
+  if(text === "") return;
+
+  addMessage(text,"user");
+
+  input.value = "";
+
+  setTimeout(()=>{
+
+    const response =
+    generateAI(text);
+
+    addMessage(response,"bot");
+
+  },700);
+
+}
+
+sendBtn.onclick = sendMessage;
+
+input.addEventListener("keypress",(e)=>{
+
+  if(e.key === "Enter"){
+
+    sendMessage();
+
+  }
+
+});
+
+/* =========================
+   QUICK ASK
+========================= */
+
+function quickAsk(text){
+
+  input.value = text;
+
+  sendMessage();
+}
+
+/* =========================
+   AI ENGINE
+========================= */
+
+function generateAI(prompt){
+
+  prompt =
+  prompt.toLowerCase();
+
+  /* WEBSITE */
+
+  if(prompt.includes("website")){
+
+    return `
+      🌐 Website Development Services
+      <br><br>
+
+      • Premium Futuristic UI <br>
+      • Responsive Design <br>
+      • Startup Landing Pages <br>
+      • SaaS Platforms <br>
+      • High-Speed Performance
+    `;
+  }
+
+  /* AI */
+
+  else if(prompt.includes("ai")){
+
+    return `
+      🤖 AI Integration Services
+      <br><br>
+
+      • AI Chatbots <br>
+      • OpenAI Integration <br>
+      • Smart Automation <br>
+      • AI Dashboards <br>
+      • AI Startup Systems
+    `;
+  }
+
+  /* IOT */
+
+  else if(prompt.includes("iot")){
+
+    return `
+      📡 IoT & Embedded Solutions
+      <br><br>
+
+      • Device Monitoring <br>
+      • Smart Dashboards <br>
+      • Sensor Data UI <br>
+      • Real-Time Systems <br>
+      • Embedded Interfaces
+    `;
+  }
+
+  /* PRICING */
+
+  else if(prompt.includes("pricing")
+  || prompt.includes("price")){
+
+    return `
+      💰 Estimated Startup Pricing
+      <br><br>
+
+      • Landing Page → ₹5K+ <br>
+      • Premium Website → ₹15K+ <br>
+      • AI Integration → ₹25K+ <br>
+      • IoT Dashboard → ₹30K+
+    `;
+  }
+
+  /* DEFAULT */
+
+  else{
+
+    return `
+      🚀 AuraForge AI is active.
+      <br><br>
+
+      Ask me about:
+      <br><br>
+
+      • Websites <br>
+      • AI Systems <br>
+      • Branding <br>
+      • IoT Solutions <br>
+      • Startup Experiences
+    `;
+  }
+
+}
+
+/* =========================
+   VOICE ASSISTANT
+========================= */
+
+const voiceBtn =
+document.getElementById("voiceBtn");
+
+voiceBtn.onclick = () => {
+
+  const recognition =
+  new(window.SpeechRecognition
+  || window.webkitSpeechRecognition)();
+
+  recognition.lang = "en-US";
+
+  recognition.start();
+
+  recognition.onresult = (event)=>{
+
+    const transcript =
+    event.results[0][0].transcript;
+
+    input.value = transcript;
+
+    sendMessage();
+  };
+
+};
+
+</script>
 </body>
 </html>
