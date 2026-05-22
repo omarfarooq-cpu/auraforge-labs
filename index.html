@@ -1668,5 +1668,490 @@ voiceBtn.onclick = () => {
 };
 
 </script>
+<!-- ====================================== -->
+<!-- AURAFORGE AI PRO UPGRADE SYSTEM -->
+<!-- ====================================== -->
+
+<!-- ADD THIS AFTER YOUR AI PANEL -->
+
+<!-- PROJECT ESTIMATOR -->
+<div class="estimate-panel glass-ui" id="estimatePanel">
+
+  <div class="estimate-header">
+    <h2>AI Project Estimator</h2>
+    <p>Generate smart startup project estimates</p>
+  </div>
+
+  <div class="estimate-form">
+
+    <!-- PROJECT TYPE -->
+    <select id="projectType">
+
+      <option value="5000">
+        Landing Page
+      </option>
+
+      <option value="15000">
+        Premium Website
+      </option>
+
+      <option value="30000">
+        AI Platform
+      </option>
+
+      <option value="40000">
+        IoT Dashboard
+      </option>
+
+    </select>
+
+    <!-- PAGES -->
+    <input
+      type="number"
+      id="pages"
+      placeholder="Number of Pages"
+    />
+
+    <!-- AI -->
+    <select id="aiFeature">
+
+      <option value="0">
+        No AI Integration
+      </option>
+
+      <option value="10000">
+        AI Chatbot
+      </option>
+
+      <option value="20000">
+        Advanced AI System
+      </option>
+
+    </select>
+
+    <!-- DESIGN -->
+    <select id="designType">
+
+      <option value="0">
+        Standard Design
+      </option>
+
+      <option value="5000">
+        Premium Futuristic UI
+      </option>
+
+    </select>
+
+    <button onclick="generateEstimate()">
+      Generate Estimate
+    </button>
+
+  </div>
+
+  <!-- RESULT -->
+  <div class="estimate-result" id="estimateResult">
+
+    AI estimate will appear here 🚀
+
+  </div>
+
+</div>
+
+<!-- LIVE ANALYTICS -->
+<div class="analytics-ui glass-ui">
+
+  <div class="analytics-card">
+
+    <h3>Visitors</h3>
+
+    <div class="analytics-number" id="visitorCount">
+      1248
+    </div>
+
+  </div>
+
+  <div class="analytics-card">
+
+    <h3>Projects</h3>
+
+    <div class="analytics-number">
+      48
+    </div>
+
+  </div>
+
+  <div class="analytics-card">
+
+    <h3>AI Interactions</h3>
+
+    <div class="analytics-number" id="aiCount">
+      932
+    </div>
+
+  </div>
+
+</div>
+
+<!-- AI HOLOGRAM -->
+<div class="hologram-bg"></div>
+
+<style>
+
+/* ======================================
+   GLASS UI
+====================================== */
+
+.glass-ui{
+
+  background:
+  rgba(255,255,255,0.05);
+
+  border:
+  1px solid rgba(255,255,255,0.08);
+
+  backdrop-filter:blur(18px);
+
+  border-radius:28px;
+
+  box-shadow:
+  0 0 40px rgba(0,217,255,0.08);
+}
+
+/* ======================================
+   ESTIMATOR PANEL
+====================================== */
+
+.estimate-panel{
+
+  width:100%;
+
+  margin-top:4rem;
+
+  padding:2rem;
+}
+
+.estimate-header h2{
+
+  color:white;
+
+  font-size:2rem;
+}
+
+.estimate-header p{
+
+  color:#a8b2d1;
+
+  margin-top:0.5rem;
+}
+
+/* ======================================
+   FORM
+====================================== */
+
+.estimate-form{
+
+  display:grid;
+
+  grid-template-columns:
+  repeat(auto-fit,minmax(220px,1fr));
+
+  gap:1rem;
+
+  margin-top:2rem;
+}
+
+.estimate-form select,
+.estimate-form input{
+
+  background:
+  rgba(255,255,255,0.05);
+
+  border:
+  1px solid rgba(255,255,255,0.08);
+
+  padding:1rem;
+
+  color:white;
+
+  border-radius:14px;
+
+  outline:none;
+}
+
+.estimate-form button{
+
+  background:
+  linear-gradient(
+    135deg,
+    #00d9ff,
+    #7a5cff
+  );
+
+  border:none;
+
+  color:white;
+
+  border-radius:14px;
+
+  cursor:pointer;
+
+  font-weight:600;
+
+  transition:0.4s ease;
+}
+
+.estimate-form button:hover{
+
+  transform:translateY(-4px);
+
+  box-shadow:
+  0 0 25px rgba(0,217,255,0.3);
+}
+
+/* ======================================
+   RESULT
+====================================== */
+
+.estimate-result{
+
+  margin-top:2rem;
+
+  padding:1.5rem;
+
+  border-radius:20px;
+
+  background:
+  rgba(0,217,255,0.08);
+
+  border:
+  1px solid rgba(0,217,255,0.12);
+
+  color:white;
+
+  line-height:1.8;
+}
+
+/* ======================================
+   ANALYTICS
+====================================== */
+
+.analytics-ui{
+
+  margin-top:4rem;
+
+  padding:2rem;
+
+  display:grid;
+
+  grid-template-columns:
+  repeat(auto-fit,minmax(220px,1fr));
+
+  gap:1.5rem;
+}
+
+.analytics-card{
+
+  padding:2rem;
+
+  border-radius:24px;
+
+  background:
+  rgba(255,255,255,0.03);
+
+  text-align:center;
+}
+
+.analytics-card h3{
+
+  color:#a8b2d1;
+}
+
+.analytics-number{
+
+  margin-top:1rem;
+
+  font-size:3rem;
+
+  font-weight:700;
+
+  background:
+  linear-gradient(
+    135deg,
+    #00d9ff,
+    #7a5cff
+  );
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+/* ======================================
+   HOLOGRAM BACKGROUND
+====================================== */
+
+.hologram-bg{
+
+  position:fixed;
+
+  inset:0;
+
+  pointer-events:none;
+
+  background:
+  radial-gradient(
+    circle at center,
+    rgba(0,217,255,0.08),
+    transparent 35%
+  );
+
+  animation:holoPulse 6s ease infinite;
+
+  z-index:-1;
+}
+
+@keyframes holoPulse{
+
+  0%,100%{
+
+    opacity:0.5;
+    transform:scale(1);
+  }
+
+  50%{
+
+    opacity:1;
+    transform:scale(1.05);
+  }
+}
+
+/* ======================================
+   MOBILE
+====================================== */
+
+@media(max-width:768px){
+
+  .estimate-panel,
+  .analytics-ui{
+
+    padding:1.5rem;
+  }
+}
+
+</style>
+
+<script>
+
+/* ======================================
+   AI PROJECT ESTIMATOR
+====================================== */
+
+function generateEstimate(){
+
+  const project =
+  parseInt(
+    document.getElementById(
+      "projectType"
+    ).value
+  );
+
+  const pages =
+  parseInt(
+    document.getElementById(
+      "pages"
+    ).value
+  ) || 1;
+
+  const ai =
+  parseInt(
+    document.getElementById(
+      "aiFeature"
+    ).value
+  );
+
+  const design =
+  parseInt(
+    document.getElementById(
+      "designType"
+    ).value
+  );
+
+  /* PAGE COST */
+
+  const pageCost =
+  pages * 1500;
+
+  /* TOTAL */
+
+  const total =
+  project +
+  pageCost +
+  ai +
+  design;
+
+  /* TIMELINE */
+
+  let days =
+  Math.ceil(total / 5000);
+
+  /* OUTPUT */
+
+  document.getElementById(
+    "estimateResult"
+  ).innerHTML = `
+
+    🚀 AI Project Estimate
+    <br><br>
+
+    💰 Estimated Cost:
+    <strong>
+      ₹${total.toLocaleString()}
+    </strong>
+
+    <br><br>
+
+    ⏳ Estimated Timeline:
+    <strong>
+      ${days} Days
+    </strong>
+
+    <br><br>
+
+    ⚡ Recommended Stack:
+    <br>
+
+    • Next.js <br>
+    • AI Integration <br>
+    • Futuristic UI <br>
+    • Responsive System
+
+  `;
+}
+
+/* ======================================
+   LIVE ANALYTICS COUNTER
+====================================== */
+
+let visitors = 1248;
+let aiCount = 932;
+
+setInterval(()=>{
+
+  visitors +=
+  Math.floor(Math.random()*4);
+
+  aiCount +=
+  Math.floor(Math.random()*3);
+
+  document.getElementById(
+    "visitorCount"
+  ).innerText = visitors;
+
+  document.getElementById(
+    "aiCount"
+  ).innerText = aiCount;
+
+},3000);
+
+</script>
 </body>
 </html>
