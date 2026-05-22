@@ -491,7 +491,8 @@
       </p>
 
       <div class="hero-buttons">
-        <a href="#contact" class="btn btn-primary">
+        <a href="https://wa.me/7092840069" class="btn btn-primary"
+        target="_blank">
           Start a Project
         </a>
 
@@ -757,7 +758,11 @@
 
       <div class="glass-card fade-up">
 
-        <form class="contact-form">
+        <form
+  action="https://formsubmit.co/labsauraforge@gmail.com"
+  method="POST"
+  class="contact-form"
+>
 
           <input type="text" placeholder="Your Name" required />
 
@@ -775,19 +780,15 @@
 
       <div class="socials fade-up">
 
-        <a href="#" class="social-link">
-          📧 hello@auraforgelabs.com
+        <a href="mailto:labsauraforge@gmail.com" class="social-link">
+          📧 labsauraforge@gmail.com
         </a>
 
-        <a href="#" class="social-link">
+        <a href="https://www.instagram.com/aura.forgelabs" class="social-link">
           📸 Instagram
         </a>
 
-        <a href="#" class="social-link">
-          💼 LinkedIn
-        </a>
-
-        <a href="#" class="social-link">
+        <a href="https://wa.me/7092840069" class="social-link">
           💬 WhatsApp
         </a>
 
@@ -2151,6 +2152,356 @@ setInterval(()=>{
   ).innerText = aiCount;
 
 },3000);
+
+</script>
+<!-- ===================================== -->
+<!-- AURAFORGE FIREBASE CONTACT SYSTEM -->
+<!-- ===================================== -->
+
+<!-- STEP 1 -->
+<!-- ADD THIS INSIDE <body> -->
+
+<section class="firebase-contact">
+
+  <div class="firebase-card">
+
+    <h2>Start Your Project</h2>
+
+    <p>
+      Connect with AuraForge Labs and
+      launch your futuristic digital experience.
+    </p>
+
+    <!-- CONTACT FORM -->
+    <form id="contactForm">
+
+      <input
+        type="text"
+        id="name"
+        placeholder="Your Name"
+        required
+      />
+
+      <input
+        type="email"
+        id="email"
+        placeholder="Your Email"
+        required
+      />
+
+      <input
+        type="text"
+        id="company"
+        placeholder="Startup / Company"
+      />
+
+      <textarea
+        id="message"
+        placeholder="Tell us about your project"
+        required
+      ></textarea>
+
+      <button type="submit">
+        Send Project Inquiry 🚀
+      </button>
+
+    </form>
+
+    <!-- STATUS -->
+    <div id="statusMessage"></div>
+
+  </div>
+
+</section>
+
+<style>
+
+/* =====================================
+   FIREBASE CONTACT SECTION
+===================================== */
+
+.firebase-contact{
+
+  padding:6rem 7%;
+
+  display:flex;
+  justify-content:center;
+}
+
+.firebase-card{
+
+  width:100%;
+  max-width:700px;
+
+  background:
+  rgba(255,255,255,0.05);
+
+  border:
+  1px solid rgba(255,255,255,0.08);
+
+  backdrop-filter:blur(18px);
+
+  border-radius:30px;
+
+  padding:3rem;
+
+  box-shadow:
+  0 0 40px rgba(0,217,255,0.08);
+}
+
+.firebase-card h2{
+
+  color:white;
+
+  font-size:2.5rem;
+}
+
+.firebase-card p{
+
+  color:#a8b2d1;
+
+  margin-top:1rem;
+
+  line-height:1.7;
+}
+
+/* =====================================
+   FORM
+===================================== */
+
+#contactForm{
+
+  margin-top:2rem;
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:1rem;
+}
+
+#contactForm input,
+#contactForm textarea{
+
+  background:
+  rgba(255,255,255,0.05);
+
+  border:
+  1px solid rgba(255,255,255,0.08);
+
+  padding:1rem;
+
+  border-radius:14px;
+
+  color:white;
+
+  outline:none;
+
+  font-size:1rem;
+}
+
+#contactForm textarea{
+
+  min-height:160px;
+
+  resize:none;
+}
+
+#contactForm button{
+
+  padding:1rem;
+
+  border:none;
+
+  border-radius:14px;
+
+  background:
+  linear-gradient(
+    135deg,
+    #00d9ff,
+    #7a5cff
+  );
+
+  color:white;
+
+  cursor:pointer;
+
+  font-weight:600;
+
+  transition:0.4s ease;
+}
+
+#contactForm button:hover{
+
+  transform:translateY(-4px);
+
+  box-shadow:
+  0 0 30px rgba(0,217,255,0.25);
+}
+
+/* =====================================
+   STATUS MESSAGE
+===================================== */
+
+#statusMessage{
+
+  margin-top:1.5rem;
+
+  color:#00fff0;
+
+  font-weight:500;
+}
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media(max-width:768px){
+
+  .firebase-contact{
+
+    padding:4rem 5%;
+  }
+
+  .firebase-card{
+
+    padding:2rem;
+  }
+
+  .firebase-card h2{
+
+    font-size:2rem;
+  }
+}
+
+</style>
+
+<!-- ===================================== -->
+<!-- FIREBASE SDK -->
+<!-- ===================================== -->
+
+<script type="module">
+
+/* =====================================
+   IMPORT FIREBASE
+===================================== */
+
+import {
+  initializeApp
+} from
+"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+  getFirestore,
+  collection,
+  addDoc
+} from
+"https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+/* =====================================
+   YOUR FIREBASE CONFIG
+===================================== */
+
+const firebaseConfig = {
+  apiKey: "AIzaSyD2zeRt0QaKhilOmv1MWMznv-B60xrZwLk",
+  authDomain: "auraforge-labs.firebaseapp.com",
+  projectId: "auraforge-labs",
+  storageBucket: "auraforge-labs.firebasestorage.app",
+  messagingSenderId: "242673169096",
+  appId: "1:242673169096:web:1b49e341d1f7b5593cabfd",
+  measurementId: "G-EL29FKP3GW"
+};
+
+
+/* =====================================
+   INITIALIZE FIREBASE
+===================================== */
+
+const app =
+initializeApp(firebaseConfig);
+
+const db =
+getFirestore(app);
+
+/* =====================================
+   FORM SUBMIT
+===================================== */
+
+const form =
+document.getElementById(
+  "contactForm"
+);
+
+const status =
+document.getElementById(
+  "statusMessage"
+);
+
+form.addEventListener(
+  "submit",
+  async(e)=>{
+
+    e.preventDefault();
+
+    /* GET VALUES */
+
+    const name =
+    document.getElementById(
+      "name"
+    ).value;
+
+    const email =
+    document.getElementById(
+      "email"
+    ).value;
+
+    const company =
+    document.getElementById(
+      "company"
+    ).value;
+
+    const message =
+    document.getElementById(
+      "message"
+    ).value;
+
+    try{
+
+      /* SAVE TO FIREBASE */
+
+      await addDoc(
+        collection(db,"leads"),
+        {
+
+          name:name,
+          email:email,
+          company:company,
+          message:message,
+
+          createdAt:
+          new Date()
+
+        }
+      );
+
+      status.innerHTML =
+      "🚀 Project inquiry sent successfully!";
+
+      form.reset();
+
+    }
+
+    catch(error){
+
+      status.innerHTML =
+      "❌ Error sending inquiry";
+
+      console.error(error);
+
+    }
+
+  }
+);
 
 </script>
 </body>
