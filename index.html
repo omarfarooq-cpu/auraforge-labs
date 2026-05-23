@@ -820,7 +820,7 @@ function sendWhatsApp(name, message) {
 
 }
       </script>
-
+<section class="fade-up">
       <div class="socials fade-up">
 
         <a href="mailto:labsauraforge@gmail.com" class="social-link">
@@ -836,7 +836,29 @@ function sendWhatsApp(name, message) {
         </a>
 
       </div>
+<button onclick="payNow()">
+  Pay & Start Project 🚀
+</button>
+      <script>
+function payNow() {
 
+  var options = {
+    key: "YOUR_KEY_ID",
+    amount: 500000, // ₹5000 in paise
+    currency: "INR",
+    name: "AuraForge Labs",
+    description: "Startup Website Package",
+
+    handler: function (response) {
+      alert("Payment Successful 🚀");
+    }
+
+  };
+
+  var rzp = new Razorpay(options);
+  rzp.open();
+}
+      </script>
     </div>
   </section>
 
@@ -2546,6 +2568,36 @@ form.addEventListener(
   }
 );
 
+</script>
+<script>
+async function generateAIReply(message) {
+
+  const response = await fetch("https://api.openai.com/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer key_RdkhSL6xyJL0Y3S1"
+    },
+    body: JSON.stringify({
+      model: "gpt-5.5 Turbo",
+      messages: [
+        {
+          role: "system",
+          content: "You are AuraForge Labs AI assistant. Reply like a professional startup consultant."
+        },
+        {
+          role: "user",
+          content: message
+        }
+      ]
+    })
+  });
+
+  const data = await response.json();
+
+  return data.choices[0].message.content;
+
+}
 </script>
  <!-- FOOTER -->
   <footer>

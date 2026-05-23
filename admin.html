@@ -195,5 +195,29 @@ onAuthStateChanged(auth, (user) => {
 
 });
 </script>
+<input id="search" placeholder="Search leads...">
+<script>
+document.getElementById("search")
+.addEventListener("input", (e) => {
+
+  const value = e.target.value.toLowerCase();
+
+  document.querySelectorAll(".card").forEach(card => {
+
+    const text = card.innerText.toLowerCase();
+
+    card.style.display =
+    text.includes(value) ? "block" : "none";
+
+  });
+
+});
+</script>
+<style>
+.status-new { color: #00d9ff; }
+.status-contacted { color: yellow; }
+.status-won { color: #00ff88; }
+.status-lost { color: red; }
+</style>
 </body>
 </html>
