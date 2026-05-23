@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AuraForge Admin Dashboard</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      background: #0a0f1c;
+      color: white;
+    }
+
+    header {
+      padding: 20px;
+      background: linear-gradient(90deg,#00d9ff,#7a5cff);
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    .container {
+      padding: 20px;
+      display: grid;
+      gap: 15px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.05);
+      padding: 15px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .name {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .email {
+      color: #00d9ff;
+    }
+
+    button {
+      margin-top: 10px;
+      background: red;
+      border: none;
+      color: white;
+      padding: 6px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
+
+</head>
+
+<body>
+
+<header>
+  <h1>AuraForge Admin Dashboard</h1>
+</header>
+
+<div class="container" id="leads"></div>
+
+<script type="module">
+
+import { initializeApp } from
+"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  deleteDoc,
+  doc
+} from
+"https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+/* 🔥 YOUR FIREBASE CONFIG */
+const firebaseConfig = {
+    apiKey: "AIzaSyD2zeRt0QaKhilOmv1MWMznv-B60xrZwLk",
+  authDomain: "auraforge-labs.firebaseapp.com",
+  projectId: "auraforge-labs",
+  storageBucket: "auraforge-labs.firebasestorage.app",
+  messagingSenderId: "242673169096",
+  appId: "1:242673169096:web:1b49e341d1f7b5593cabfd",
+  measurementId: "G-EL29FKP3GW"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const leadsContainer = document.getElementById("leads");
+
+/* LOAD LEADS */
+async function loadLeads() {
+
+  const querySnapshot = await getDocs(collection(db, "leads"));
+
+  leadsContainer.innerHTML = "";
+
+  querySnapshot.forEach((docItem) => {
+
+    const data = docItem.data();
+
+    const div = document.createElement("div");
+    div.className = "card";
+
+    div.innerHTML = `
+      <div class="name">${data.name}</div>
+      <div class="email">${data.email}</div>
+      <p>${data.message}</p>
+      <button onclick="deleteLead('${docItem.id}')">
+        Delete
+      </button>
+    `;
+
+    leadsContainer.appendChild(div);
+
+  });
+
+}
+
+/* DELETE LEAD */
+window.deleteLead = async (id) => {
+
+  await deleteDoc(doc(db, "leads", id));
+
+  loadLeads();
+
+};
+
+loadLeads();
+
+</script>
+<div id="loginBox">
+
+  <h2>Admin Login</h2>
+
+  <input id="labsauraforge@gmail.com" placeholder="Email">
+  <input id="labs@auraforge-admin" type="password" placeholder="Password">
+
+  <button onclick="login()">
+    Login
+  </button>
+
+</div>
+<script type="module">
+const auth = getAuth(app);
+
+window.login = async () => {
+
+  const email =
+  document.getElementById("labsauraforge@gmail.com").value;
+
+  const password =
+  document.getElementById("labs@auraforge-admin").value;
+
+  try {
+
+    await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+
+    alert("Login Success 🚀");
+
+  } catch (e) {
+
+    alert("Login Failed ❌");
+
+  }
+};
+</script>
+<script type="module">
+import { getAuth, onAuthStateChanged } from
+
+onAuthStateChanged(auth, (user) => {
+
+  if (user) {
+
+    document.getElementById("loginBox").style.display = "none";
+
+    document.getElementById("dashboard").style.display = "block";
+
+  } else {
+
+    document.getElementById("loginBox").style.display = "block";
+
+    document.getElementById("dashboard").style.display = "none";
+
+  }
+
+});
+</script>
+</body>
+</html>

@@ -773,10 +773,53 @@
           <button class="btn btn-primary">
             Send Message
           </button>
+          <script>
+function sendEmail(name, email, message) {
 
+  emailjs.send("labsauraforge@gmail.com", "template_j020xee", {
+    name: name,
+    email: email,
+    message: message
+  });
+}
+form.addEventListener("submit", (e) => {
+
+  e.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const message = document.getElementById("message").value;
+
+  // Firebase save (already existing)
+  saveToFirebase(name, email, message);
+
+  // EMAIL AUTO SEND
+  sendEmail(name, email, message);
+
+});
+sendWhatsApp(name, message);
+        </script>
+        
         </form>
+<script src="https://cdn.emailjs.com/dist/email.min.js">
+  emailjs.init("Zz_-oK717_97848iK");
 
-      </div>
+</script>
+      <script>
+function sendWhatsApp(name, message) {
+
+  const phone = "917092840069"; // your number
+
+  const url =
+  `https://wa.me/${7092840069}?text=` +
+  encodeURIComponent(
+    `🔥 New Lead from AuraForge Labs\n\nName: ${name}\nMessage: ${message}`
+  );
+
+  window.open(url, "_blank");
+
+}
+      </script>
 
       <div class="socials fade-up">
 
@@ -2504,5 +2547,18 @@ form.addEventListener(
 );
 
 </script>
+ <!-- FOOTER -->
+  <footer>
+
+    <div>
+      © 2026 AuraForge Labs
+    </div>
+
+    <div>
+      Building the Future, Digitally.
+    </div>
+
+  </footer>
+
 </body>
 </html>
